@@ -31,13 +31,13 @@
 		},
 		onShow() {
 			uni.hideLoading()
-			this.title = uni.getStorageSync("title") || "圈子"
+			this.title = uni.getStorageSync("dtitle") || "圈子"
 			uni.setNavigationBarTitle({
 				title: this.title
 			})
 			
-			this.code = uni.getStorageSync("code") || "1264"
-			uni.setStorageSync("code", this.code)
+			this.code = uni.getStorageSync("dcode") || "1264"
+			uni.setStorageSync("dcode", this.code)
 		},
 		methods: {
 

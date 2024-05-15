@@ -37,9 +37,9 @@
 		},
 		onShow() {
 			uni.setNavigationBarTitle({
-				title: uni.getStorageSync("title") || "圈子"
+				title: uni.getStorageSync("dtitle") || "圈子"
 			})
-			this.selectList = uni.getStorageSync("selectList") || []
+			this.selectList = uni.getStorageSync("dselectList") || []
 		},
 		methods: {
 			clear() {
@@ -50,7 +50,7 @@
 					success: function(res) {
 						if (res.confirm) {
 							that.selectList = []
-							uni.setStorageSync("selectList", [])
+							uni.setStorageSync("dselectList", [])
 							uni.showToast({
 								title: "清空成功"
 							})

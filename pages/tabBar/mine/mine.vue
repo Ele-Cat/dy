@@ -29,12 +29,12 @@
 		onShow() {
 			uni.hideLoading()
 			uni.setNavigationBarTitle({
-				title: uni.getStorageSync("title") || "圈子"
+				title: uni.getStorageSync("dtitle") || "圈子"
 			})
-			this.username = uni.getStorageSync("username") || "轩宝"
-			uni.setStorageSync("username", this.username)
-			this.money = uni.getStorageSync("money") || "3600.00"
-			uni.setStorageSync("money", this.money)
+			this.username = uni.getStorageSync("dusername") || "轩宝"
+			uni.setStorageSync("dusername", this.username)
+			this.money = uni.getStorageSync("dmoney") || "3600.00"
+			uni.setStorageSync("dmoney", this.money)
 		},
 		methods: {
 			showPop() {

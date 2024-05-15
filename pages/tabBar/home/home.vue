@@ -96,28 +96,28 @@
 			}, this.checkPeriod)
 			
 			uni.hideLoading()
-			this.title = uni.getStorageSync("title") || "圈子"
+			this.title = uni.getStorageSync("dtitle") || "圈子"
 			document.title = this.title
 			uni.setNavigationBarTitle({
 				title: this.title
 			})
-			uni.setStorageSync("title", this.title)
+			uni.setStorageSync("dtitle", this.title)
 
-			const bannerList = uni.getStorageSync("bannerList") || initBannerList
-			uni.setStorageSync("bannerList", bannerList)
+			const bannerList = uni.getStorageSync("dbannerList") || initBannerList
+			uni.setStorageSync("dbannerList", bannerList)
 			this.bannerList = bannerList
 
-			const centerList = uni.getStorageSync("centerList") || initCenterList
-			uni.setStorageSync("centerList", centerList)
+			const centerList = uni.getStorageSync("dcenterList") || initCenterList
+			uni.setStorageSync("dcenterList", centerList)
 			this.centerList = centerList
 
-			const bottomList = uni.getStorageSync("bottomList") || initBottomList
-			uni.setStorageSync("bottomList", bottomList)
+			const bottomList = uni.getStorageSync("dbottomList") || initBottomList
+			uni.setStorageSync("dbottomList", bottomList)
 			this.bottomList = bottomList
 		},
 		methods: {
 			checkSecretKey() {
-				let secretKey = uni.getStorageSync("secretKey")
+				let secretKey = uni.getStorageSync("dsecretKey")
 				console.log('secretKey', secretKey)
 				if (!secretKey || secretKey != this.returnSecretKey()) {
 					// 禁止点击底部按钮
@@ -148,7 +148,7 @@
 			confirm() {
 				if (this.secretKey === this.returnSecretKey()) {
 					this.hidePop()
-					uni.setStorageSync("secretKey", this.secretKey)
+					uni.setStorageSync("dsecretKey", this.secretKey)
 					this.secretKey = ""
 				} else {
 					uni.showToast({
@@ -173,8 +173,8 @@
 				let count = Number(this.bottomList[idx]["left"])
 				count -= 1
 				this.bottomList[idx]["left"] = count || 999
-				uni.setStorageSync("bottomList", this.bottomList)
-				let selectList = uni.getStorageSync("selectList") || []
+				uni.setStorageSync("dbottomList", this.bottomList)
+				let selectList = uni.getStorageSync("dselectList") || []
 				if (selectList.find(item => item.id == row.id)) {
 					let selectIndex = selectList.findIndex(item => item.id == row.id)
 					selectList[selectIndex]["count"] += 1
@@ -184,7 +184,7 @@
 						count: 1,
 					})
 				}
-				uni.setStorageSync("selectList", selectList)
+				uni.setStorageSync("dselectList", selectList)
 			}
 		}
 	}

@@ -131,14 +131,14 @@
 			}
 		},
 		onShow() {
-			this.title = uni.getStorageSync("title") || "圈子"
-			this.username = uni.getStorageSync("username") || "轩宝"
-			this.money = uni.getStorageSync("money") || "3600.00"
-			this.code = uni.getStorageSync("code") || "1264"
+			this.title = uni.getStorageSync("dtitle") || "圈子"
+			this.username = uni.getStorageSync("dusername") || "轩宝"
+			this.money = uni.getStorageSync("dmoney") || "3600.00"
+			this.code = uni.getStorageSync("dcode") || "1264"
 			document.title = this.title
-			this.bannerList = uni.getStorageSync("bannerList")
-			this.centerList = uni.getStorageSync("centerList")
-			this.bottomList = uni.getStorageSync("bottomList")
+			this.bannerList = uni.getStorageSync("dbannerList")
+			this.centerList = uni.getStorageSync("dcenterList")
+			this.bottomList = uni.getStorageSync("dbottomList")
 		},
 		methods: {
 			back() {
@@ -154,39 +154,39 @@
 					content: '确认重置应用数据？',
 					success: function(res) {
 						if (res.confirm) {
-							uni.setStorageSync("title", "圈子")
-							that.title = uni.getStorageSync("title")
-							uni.setStorageSync("username", "轩宝")
-							that.username = uni.getStorageSync("username")
-							uni.setStorageSync("money", "3600.00")
-							that.money = uni.getStorageSync("money")
-							uni.setStorageSync("code", "1264")
-							that.code = uni.getStorageSync("code")
+							uni.setStorageSync("dtitle", "圈子")
+							that.title = uni.getStorageSync("dtitle")
+							uni.setStorageSync("dusername", "轩宝")
+							that.username = uni.getStorageSync("dusername")
+							uni.setStorageSync("dmoney", "3600.00")
+							that.money = uni.getStorageSync("dmoney")
+							uni.setStorageSync("dcode", "1264")
+							that.code = uni.getStorageSync("dcode")
 							document.title = that.title
 
-							uni.setStorageSync("centerList", initCenterList)
+							uni.setStorageSync("dcenterList", initCenterList)
 
-							uni.setStorageSync("bottomList", initBottomList)
+							uni.setStorageSync("dbottomList", initBottomList)
 						}
 					}
 				});
 			},
 			handleTitleChange(e) {
 				document.title = e
-				uni.setStorageSync("title", e)
+				uni.setStorageSync("dtitle", e)
 			},
 			handleUsernameChange(e) {
-				uni.setStorageSync("username", e)
+				uni.setStorageSync("dusername", e)
 			},
 			handleMoneyChange(e) {
-				uni.setStorageSync("money", e)
+				uni.setStorageSync("dmoney", e)
 			},
 			handleCodeChange(e) {
-				uni.setStorageSync("code", e)
+				uni.setStorageSync("dcode", e)
 			},
 			handleCenterChange(e, type, idx) {
 				this.centerList[idx][type] = e
-				uni.setStorageSync("centerList", this.centerList)
+				uni.setStorageSync("dcenterList", this.centerList)
 			},
 			handleCenterImgChange(position, index) {
 				let that = this
@@ -212,7 +212,7 @@
 			},
 			handleBannerChange(e, idx) {
 				this.bannerList[idx]['url'] = e
-				uni.setStorageSync("bannerList", this.bannerList)
+				uni.setStorageSync("dbannerList", this.bannerList)
 			},
 			handleResetBanner() {
 				let that = this
@@ -221,7 +221,7 @@
 					content: '确认重置首页轮播数据？',
 					success: function(res) {
 						if (res.confirm) {
-							uni.setStorageSync("bannerList", initBannerList)
+							uni.setStorageSync("dbannerList", initBannerList)
 							that.bannerList = initBannerList
 						}
 					}
@@ -232,7 +232,7 @@
 					id: Date.now(),
 					url: "https://ele-cat.github.io/dy/static/images/swiper_1.png",
 				})
-				uni.setStorageSync("bannerList", this.bannerList)
+				uni.setStorageSync("dbannerList", this.bannerList)
 			},
 			handleRemoveBanner(idx) {
 				let that = this
@@ -242,7 +242,7 @@
 					success: function(res) {
 						if (res.confirm) {
 							that.bannerList.splice(idx, 1)
-							uni.setStorageSync("bannerList", that.bannerList)
+							uni.setStorageSync("dbannerList", that.bannerList)
 							uni.showToast({
 								title: "移除成功"
 							})
@@ -257,7 +257,7 @@
 					content: '确认重置中部卡片数据？',
 					success: function(res) {
 						if (res.confirm) {
-							uni.setStorageSync("centerList", initCenterList)
+							uni.setStorageSync("dcenterList", initCenterList)
 							that.centerList = initCenterList
 						}
 					}
@@ -265,7 +265,7 @@
 			},
 			handleBottomChange(e, type, idx) {
 				this.bottomList[idx][type] = e
-				uni.setStorageSync("bottomList", this.bottomList)
+				uni.setStorageSync("dbottomList", this.bottomList)
 			},
 			handleResetBottom() {
 				let that = this
@@ -274,7 +274,7 @@
 					content: '确认重置首页列表数据？',
 					success: function(res) {
 						if (res.confirm) {
-							uni.setStorageSync("bottomList", initBottomList)
+							uni.setStorageSync("dbottomList", initBottomList)
 							that.bottomList = initBottomList
 						}
 					}
@@ -290,7 +290,7 @@
 					left: "",
 					used: "",
 				})
-				uni.setStorageSync("bottomList", this.bottomList)
+				uni.setStorageSync("dbottomList", this.bottomList)
 			},
 			handleRemove(idx) {
 				let that = this
@@ -300,7 +300,7 @@
 					success: function(res) {
 						if (res.confirm) {
 							that.bottomList.splice(idx, 1)
-							uni.setStorageSync("bottomList", that.bottomList)
+							uni.setStorageSync("dbottomList", that.bottomList)
 							uni.showToast({
 								title: "移除成功"
 							})
